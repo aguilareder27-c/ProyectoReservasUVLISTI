@@ -1,0 +1,57 @@
+@page
+@using ReservaEspacios.Services
+@model ReservaEspacios.Pages.Admin.ApelacionesModel
+@{
+    ViewData["Title"] = "Apelaciones";
+}
+<h2>Apelaciones</h2>
+
+<h5 class="mt-3">Pendientes</h5>
+@if (Model.Pendientes.Count == 0)
+{
+    <p class="text-muted">No hay apelaciones pendientes.</p>
+}
+else
+{
+    <div class="table-responsive">
+    <table class="table align-middle">
+        <thead><tr><th>Usuario</th><th>Reservación</th><th>Justificación</th><th>Fecha</th><th>Acción</th></tr></thead>
+        <tbody>
+        @foreach (var a in Model.Pendientes)
+        {
+            <tr>
+                <td>@a.Usuario?.Nombre</td>
+                <td>@a.Reservacion?.Espacio?.Nombre · @(a.Reservacion != null ? Fmt.Dmy(a.Reservacion.Fecha) : "")</td>
+                <td>@a.Justificacion</td>
+                <td>@a.FechaApelacion.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>
+                    <form method="post" asp-page-handler="Resolver" class="d-inline">
+                        <input type="hidden" name="id" value="@a.IdApelacion" />
+                        <button class="btn btn-sm btn-success" name="aprobar" value="true">Aprobar</button>
+                        <button class="btn btn-sm btn-outline-danger" name="aprobar" value="false">Rechazar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    </div>
+}
+
+<h5 class="mt-4">Resueltas (últimas)</h5>
+@if (Model.Resueltas.Count == 0)
+{
+    <p class="text-muted">Sin registros.</p>
+}
+else
+{
+    <ul class="list-group">
+    @foreach (var a in Model.Resueltas)
+    {
+        <li class="list-group-item d-flex justify-content-between">
+            <span>@a.Usuario?.Nombre — @a.Reservacion?.Espacio?.Nombre</span>
+            <span class="badge @(a.EstadoApelacion == ReservaEspacios.Models.EstadoApelacion.Aprobada ? "bg-success" : "bg-secondary")">@a.EstadoApelacion</span>
+        </li>
+    }
+    </ul>
+}

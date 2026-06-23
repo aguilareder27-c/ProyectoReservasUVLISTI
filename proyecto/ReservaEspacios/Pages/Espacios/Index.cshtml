@@ -1,0 +1,40 @@
+@page
+@using ReservaEspacios.Services
+@model ReservaEspacios.Pages.Espacios.IndexModel
+@{
+    ViewData["Title"] = "Espacios";
+}
+<h2>Espacios disponibles</h2>
+<div class="row">
+    @foreach (var e in Model.Espacios)
+    {
+        <div class="col-md-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @e.Nombre
+                        @if (e.Estado == ReservaEspacios.Models.EstadoEspacio.Disponible)
+                        {
+                            <span class="badge bg-success">Disponible</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Inactivo</span>
+                        }
+                    </h5>
+                    <p class="card-text mb-1">@e.Descripcion</p>
+                    <ul class="list-unstyled small text-muted mb-2">
+                        <li><strong>Capacidad:</strong> @e.Capacidad personas</li>
+                        <li><strong>Ubicación:</strong> @e.Ubicacion</li>
+                        <li><strong>Horario:</strong> @Fmt.Hm(e.HoraApertura)–@Fmt.Hm(e.HoraCierre)</li>
+                        <li><strong>Días:</strong> @ReservaEspacios.Pages.Espacios.IndexModel.Dias(e)</li>
+                    </ul>
+                    @if (e.Estado == ReservaEspacios.Models.EstadoEspacio.Disponible)
+                    {
+                        <a class="btn btn-sm btn-primary" asp-page="/Reservaciones/Crear" asp-route-idEspacio="@e.IdEspacio">Reservar</a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

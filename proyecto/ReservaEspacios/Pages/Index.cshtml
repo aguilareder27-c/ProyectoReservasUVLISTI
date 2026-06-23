@@ -1,0 +1,18 @@
+@page
+@model ReservaEspacios.Pages.IndexModel
+@{
+    ViewData["Title"] = "Inicio";
+}
+<div class="text-center py-4">
+    <h1 class="display-6">Sistema de Reservas de Espacios</h1>
+    <p class="lead">Facultad de Estadística e Informática · Universidad Veracruzana</p>
+    <p class="text-muted">
+        Reserva el Auditorio o la Sala de Cristal para tus eventos académicos.
+        Los eventos Normal se aprueban automáticamente; los eventos UV (institucionales)
+        requieren autorización de la secretaría.
+    </p>
+    <div class="mt-4">
+        <a class="btn btn-primary btn-lg" asp-page="/Account/Login">Iniciar sesión</a>
+        <a class="btn btn-outline-secondary btn-lg" asp-page="/Account/Register">Crear cuenta</a>
+    </div>
+</div>

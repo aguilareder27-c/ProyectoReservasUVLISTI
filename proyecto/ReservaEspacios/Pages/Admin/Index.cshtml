@@ -1,0 +1,47 @@
+@page
+@model ReservaEspacios.Pages.Admin.IndexModel
+@{
+    ViewData["Title"] = "Panel";
+}
+<h2>Panel de administración</h2>
+<div class="row g-3 my-2">
+    <div class="col-6 col-md-3">
+        <div class="card text-center"><div class="card-body">
+            <div class="h3 mb-0">@Model.UVPendientes</div><div class="small text-muted">Eventos UV pendientes</div>
+            <a class="stretched-link" asp-page="/Admin/EventosUV"></a>
+        </div></div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card text-center"><div class="card-body">
+            <div class="h3 mb-0">@Model.ApelacionesPendientes</div><div class="small text-muted">Apelaciones pendientes</div>
+            <a class="stretched-link" asp-page="/Admin/Apelaciones"></a>
+        </div></div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card text-center"><div class="card-body">
+            <div class="h3 mb-0">@Model.ReservasHoy</div><div class="small text-muted">Reservas activas hoy</div>
+            <a class="stretched-link" asp-page="/Admin/Calendario"></a>
+        </div></div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card text-center"><div class="card-body">
+            <div class="h3 mb-0">@Model.TotalUsuarios</div><div class="small text-muted">Usuarios registrados</div>
+            <a class="stretched-link" asp-page="/Admin/Usuarios"></a>
+        </div></div>
+    </div>
+</div>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <h5 class="card-title">Mantenimiento</h5>
+        <p class="card-text small text-muted">
+            Marca como "no realizada" las reservaciones de días ya pasados que no se confirmaron.
+            (Se ejecuta también automáticamente al iniciar el sistema.)
+        </p>
+        <form method="post" asp-page-handler="Procesar">
+            <button class="btn btn-outline-secondary">Procesar expiraciones</button>
+        </form>
+    </div>
+</div>
+
+<p class="mt-3"><a asp-page="/Admin/HistorialBloqueos">Ver historial de bloqueos →</a></p>

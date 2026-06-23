@@ -1,0 +1,27 @@
+@page
+@model ReservaEspacios.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Crear cuenta";
+}
+<h2>Crear cuenta</h2>
+@if (Model.Error != null)
+{
+    <div class="alert alert-danger">@Model.Error</div>
+}
+<form method="post" style="max-width:420px">
+    <div class="mb-3">
+        <label class="form-label">Nombre completo</label>
+        <input class="form-control" asp-for="Nombre" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Correo institucional</label>
+        <input class="form-control" asp-for="Correo" type="email" placeholder="nombre@uv.mx" required />
+        <div class="form-text">Usa tu correo institucional (@@uv.mx).</div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Contraseña</label>
+        <input class="form-control" asp-for="Contrasena" type="password" minlength="6" required />
+    </div>
+    <button class="btn btn-primary" type="submit">Registrarme</button>
+    <a class="btn btn-link" asp-page="/Account/Login">Ya tengo cuenta</a>
+</form>

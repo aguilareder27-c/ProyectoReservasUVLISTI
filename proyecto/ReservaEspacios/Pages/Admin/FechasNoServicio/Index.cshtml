@@ -1,0 +1,87 @@
+@page
+@using ReservaEspacios.Services
+@model ReservaEspacios.Pages.Admin.FechasNoServicio.IndexModel
+@{
+    ViewData["Title"] = "Fechas sin servicio";
+    var tipos = new[] { "Feriado", "Vacaciones", "Suspension", "Mantenimiento", "EventoInstitucional" };
+}
+<h2>Fechas sin servicio</h2>
+<p class="small text-muted">Aplican a toda la facultad (todos los espacios). Deja las horas vacías para bloquear el día completo.</p>
+
+<div class="card mb-4" style="max-width:640px">
+    <div class="card-body">
+        <h5 class="card-title">Registrar</h5>
+        <form method="post">
+            <div class="row mb-2">
+                <div class="col">
+                    <label class="form-label">Fecha inicio</label>
+                    <input class="form-control" type="date" asp-for="FechaInicio" required />
+                </div>
+                <div class="col">
+                    <label class="form-label">Fecha fin (opcional)</label>
+                    <input class="form-control" type="date" asp-for="FechaFin" />
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col">
+                    <label class="form-label">Hora inicio (opcional)</label>
+                    <input class="form-control" type="time" asp-for="HoraInicio" />
+                </div>
+                <div class="col">
+                    <label class="form-label">Hora fin (opcional)</label>
+                    <input class="form-control" type="time" asp-for="HoraFin" />
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Tipo</label>
+                <select class="form-select" asp-for="TipoStr">
+                    @foreach (var t in tipos)
+                    {
+                        <option value="@t">@t</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Motivo</label>
+                <input class="form-control" asp-for="Motivo" required />
+            </div>
+            <button class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+</div>
+
+@if (Model.Fechas.Count == 0)
+{
+    <p class="text-muted">Sin registros.</p>
+}
+else
+{
+    <div class="table-responsive">
+    <table class="table table-sm align-middle">
+        <thead><tr><th>Periodo</th><th>Horas</th><th>Tipo</th><th>Motivo</th><th></th></tr></thead>
+        <tbody>
+        @foreach (var f in Model.Fechas)
+        {
+            <tr>
+                <td>
+                    @Fmt.Dmy(f.FechaInicio)
+                    @if (f.FechaFin != f.FechaInicio)
+                    {
+                        <text> – @Fmt.Dmy(f.FechaFin)</text>
+                    }
+                </td>
+                <td>@(f.HoraInicio is null ? "Día completo" : $"{Fmt.Hm(f.HoraInicio)}–{Fmt.Hm(f.HoraFin)}")</td>
+                <td>@f.Tipo</td>
+                <td>@f.Motivo</td>
+                <td>
+                    <form method="post" asp-page-handler="Eliminar" class="d-inline">
+                        <input type="hidden" name="id" value="@f.IdFechaNoServicio" />
+                        <button class="btn btn-sm btn-outline-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    </div>
+}

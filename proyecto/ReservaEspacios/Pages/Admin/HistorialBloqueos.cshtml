@@ -1,0 +1,33 @@
+@page
+@using ReservaEspacios.Models
+@model ReservaEspacios.Pages.Admin.HistorialBloqueosModel
+@{
+    ViewData["Title"] = "Historial de bloqueos";
+}
+<h2>Historial de bloqueos</h2>
+@if (Model.Historial.Count == 0)
+{
+    <p class="text-muted">Sin registros.</p>
+}
+else
+{
+    <div class="table-responsive">
+    <table class="table table-sm align-middle">
+        <thead><tr><th>Fecha</th><th>Usuario</th><th>Acción</th><th>Motivo</th><th>Admin</th></tr></thead>
+        <tbody>
+        @foreach (var h in Model.Historial)
+        {
+            <tr>
+                <td>@h.FechaAccion.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@h.Usuario?.Nombre</td>
+                <td>
+                    <span class="badge @(h.TipoAccion == TipoAccionBloqueo.Bloqueo ? "bg-danger" : "bg-success")">@h.TipoAccion</span>
+                </td>
+                <td>@h.Motivo</td>
+                <td>@h.Admin?.Nombre</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    </div>
+}

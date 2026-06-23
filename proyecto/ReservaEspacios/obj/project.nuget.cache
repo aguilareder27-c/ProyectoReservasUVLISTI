@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "DRZB+jKn7GA=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\RedFo\\OneDrive\\Documentos\\LISTI\\2Semestre\\Procesos de desarrollo\\Proyecto\\ReservaEspacios\\ReservaEspacios.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\RedFo\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.13\\microsoft.entityframeworkcore.8.0.13.nupkg.sha512",
+    "C:\\Users\\RedFo\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.13\\microsoft.entityframeworkcore.abstractions.8.0.13.nupkg.sha512",
+    "C:\\Users\\RedFo\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.13\\microsoft.entityframeworkcore.analyzers.8.0.13.nupkg.sha512",
+    "C:\\Users\\RedFo\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\8.0.13\\microsoft.entityframeworkcore.relational.8.0.13.nupkg.sha512",
+    "C:\\Users\\RedFo\\.nuget\\packages\\mysqlconnector\\2.3.5\\mysqlconnector.2.3.5.nupkg.sha512",
+    "C:\\Users\\RedFo\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\8.0.3\\pomelo.entityframeworkcore.mysql.8.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

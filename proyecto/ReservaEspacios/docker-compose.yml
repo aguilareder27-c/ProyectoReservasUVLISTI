@@ -1,0 +1,34 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: reservas-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: reservas_fei
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppassword
+    ports:
+      - "3306:3306"          # opcional: conéctate desde Workbench/DBeaver al localhost:3306
+    volumes:
+      - dbdata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-prootpassword"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  web:
+    build: .
+    container_name: reservas-web
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_URLS: "http://+:8080"
+      ConnectionStrings__Default: "Server=db;Port=3306;Database=reservas_fei;User=appuser;Password=apppassword;AllowPublicKeyRetrieval=True;SslMode=None;"
+    ports:
+      - "8080:8080"
+
+volumes:
+  dbdata:

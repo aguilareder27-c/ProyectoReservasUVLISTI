@@ -1,0 +1,83 @@
+@page
+@using ReservaEspacios.Models
+@using ReservaEspacios.Services
+@model ReservaEspacios.Pages.Reservaciones.IndexModel
+@{
+    ViewData["Title"] = "Mis reservaciones";
+}
+<h2>Mis reservaciones</h2>
+<a class="btn btn-sm btn-primary mb-3" asp-page="/Reservaciones/Crear">Nueva reservación</a>
+
+@if (Model.Lista.Count == 0)
+{
+    <p class="text-muted">Aún no tienes reservaciones.</p>
+}
+else
+{
+    <div class="table-responsive">
+    <table class="table table-sm align-middle">
+        <thead>
+            <tr>
+                <th>Espacio</th><th>Tipo</th><th>Fecha</th><th>Horario</th>
+                <th>Estado</th><th>Uso</th><th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var r in Model.Lista)
+        {
+            <tr>
+                <td>@r.Espacio?.Nombre</td>
+                <td>
+                    @r.TipoEvento
+                    @if (r.IdGrupoReserva != null)
+                    {
+                        <span class="badge bg-info text-dark">serie #@r.IdGrupoReserva</span>
+                    }
+                </td>
+                <td>@Fmt.Dmy(r.Fecha)</td>
+                <td>@Fmt.Hm(r.HoraInicio)–@Fmt.Hm(r.HoraFin)</td>
+                <td><span class="badge @ReservaEspacios.Pages.Reservaciones.IndexModel.Badge(r.EstadoReservacion)">@r.EstadoReservacion</span></td>
+                <td><span class="badge @ReservaEspacios.Pages.Reservaciones.IndexModel.BadgeUso(r.SeRealizo)">@r.SeRealizo</span></td>
+                <td>
+                    @if (Model.PuedeConfirmar(r))
+                    {
+                        <form method="post" asp-page-handler="Confirmar" class="d-inline">
+                            <input type="hidden" name="id" value="@r.IdReservacion" />
+                            <button class="btn btn-sm btn-success">Confirmar uso</button>
+                        </form>
+                    }
+                    @if (Model.PuedeCancelar(r))
+                    {
+                        <button class="btn btn-sm btn-outline-danger" data-bs-toggle="collapse" data-bs-target="#cancel-@r.IdReservacion">Cancelar</button>
+                    }
+                    @if (Model.PuedeApelar(r))
+                    {
+                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#apelar-@r.IdReservacion">Apelar</button>
+                    }
+
+                    <div class="collapse mt-2" id="cancel-@r.IdReservacion">
+                        <form method="post" asp-page-handler="Cancelar">
+                            <input type="hidden" name="id" value="@r.IdReservacion" />
+                            <input class="form-control form-control-sm mb-1" name="motivo" placeholder="Motivo de cancelación" required />
+                            <button class="btn btn-sm btn-danger">Confirmar cancelación</button>
+                            @if (r.IdGrupoReserva != null)
+                            {
+                                <button class="btn btn-sm btn-outline-danger" formaction="?handler=CancelarSerie" name="grupo" value="@r.IdGrupoReserva">Cancelar toda la serie</button>
+                            }
+                        </form>
+                    </div>
+
+                    <div class="collapse mt-2" id="apelar-@r.IdReservacion">
+                        <form method="post" asp-page-handler="Apelar">
+                            <input type="hidden" name="id" value="@r.IdReservacion" />
+                            <input class="form-control form-control-sm mb-1" name="justificacion" placeholder="¿Por qué consideras que sí asististe?" required />
+                            <button class="btn btn-sm btn-primary">Enviar apelación</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    </div>
+}

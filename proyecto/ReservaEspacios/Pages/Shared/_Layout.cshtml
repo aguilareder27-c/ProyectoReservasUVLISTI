@@ -1,0 +1,88 @@
+@using System.Security.Claims
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Reservas FEI</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-page="/Index">Reservas FEI</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (User.Identity?.IsAuthenticated == true && User.IsInRole("Usuario"))
+                        {
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Espacios/Index">Espacios</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Reservaciones/Crear">Reservar</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Reservaciones/Index">Mis reservaciones</a></li>
+                        }
+                        @if (User.Identity?.IsAuthenticated == true && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Admin/Index">Panel</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Admin/EventosUV">Eventos UV</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Admin/Apelaciones">Apelaciones</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Admin/Calendario">Calendario</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Admin/Espacios/Index">Espacios</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Admin/FechasNoServicio/Index">Fechas sin servicio</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Admin/Usuarios">Usuarios</a></li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav">
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <li class="nav-item"><span class="nav-link text-muted">@User.FindFirst(ClaimTypes.Name)?.Value</span></li>
+                            <li class="nav-item">
+                                <form method="post" asp-page="/Account/Logout" class="d-inline">
+                                    <button type="submit" class="btn btn-link nav-link text-dark">Cerrar sesión</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Account/Login">Iniciar sesión</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Account/Register">Registrarse</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @if (TempData["Ok"] != null)
+            {
+                <div class="alert alert-success">@TempData["Ok"]</div>
+            }
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger">@TempData["Error"]</div>
+            }
+            @if (TempData["Detalles"] != null)
+            {
+                <div class="alert alert-warning mb-3"><pre class="mb-0" style="white-space:pre-wrap">@TempData["Detalles"]</pre></div>
+            }
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2026 - Sistema de Reservas de Espacios FEI - UV
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

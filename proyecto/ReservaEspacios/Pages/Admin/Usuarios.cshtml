@@ -1,0 +1,66 @@
+@page
+@using ReservaEspacios.Models
+@model ReservaEspacios.Pages.Admin.UsuariosModel
+@{
+    ViewData["Title"] = "Usuarios";
+}
+<h2>Usuarios</h2>
+<p class="small text-muted">
+    Las faltas se cuentan solo de eventos Normal no realizados en los últimos @Model.Ventana días.
+    A partir de @Model.Umbral faltas el sistema sugiere bloqueo; la decisión es manual.
+</p>
+<div class="table-responsive">
+<table class="table align-middle">
+    <thead><tr><th>Nombre</th><th>Correo</th><th>Estado</th><th>Faltas (30d)</th><th>Acción</th></tr></thead>
+    <tbody>
+    @foreach (var f in Model.Filas)
+    {
+        <tr>
+            <td>@f.Usuario.Nombre</td>
+            <td>@f.Usuario.Correo</td>
+            <td>
+                @if (f.Usuario.Estado == EstadoUsuario.Bloqueado)
+                {
+                    <span class="badge bg-danger">Bloqueado</span>
+                }
+                else
+                {
+                    <span class="badge bg-success">Activo</span>
+                }
+            </td>
+            <td>
+                @f.Faltas
+                @if (f.Sugerencia && f.Usuario.Estado == EstadoUsuario.Activo)
+                {
+                    <span class="badge bg-warning text-dark">Sugerencia: bloquear</span>
+                }
+            </td>
+            <td>
+                @if (f.Usuario.Estado == EstadoUsuario.Activo)
+                {
+                    <button class="btn btn-sm btn-outline-danger" data-bs-toggle="collapse" data-bs-target="#b-@f.Usuario.IdUsuario">Bloquear</button>
+                    <div class="collapse mt-2" id="b-@f.Usuario.IdUsuario">
+                        <form method="post" asp-page-handler="Bloquear">
+                            <input type="hidden" name="id" value="@f.Usuario.IdUsuario" />
+                            <input class="form-control form-control-sm mb-1" name="motivo" placeholder="Motivo del bloqueo" required />
+                            <button class="btn btn-sm btn-danger">Confirmar bloqueo</button>
+                        </form>
+                    </div>
+                }
+                else
+                {
+                    <button class="btn btn-sm btn-outline-success" data-bs-toggle="collapse" data-bs-target="#d-@f.Usuario.IdUsuario">Desbloquear</button>
+                    <div class="collapse mt-2" id="d-@f.Usuario.IdUsuario">
+                        <form method="post" asp-page-handler="Desbloquear">
+                            <input type="hidden" name="id" value="@f.Usuario.IdUsuario" />
+                            <input class="form-control form-control-sm mb-1" name="motivo" placeholder="Motivo / observación" required />
+                            <button class="btn btn-sm btn-success">Confirmar desbloqueo</button>
+                        </form>
+                    </div>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+</div>

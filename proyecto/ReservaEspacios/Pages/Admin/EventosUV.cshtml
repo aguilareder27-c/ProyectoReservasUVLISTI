@@ -1,0 +1,50 @@
+@page
+@using ReservaEspacios.Services
+@model ReservaEspacios.Pages.Admin.EventosUVModel
+@{
+    ViewData["Title"] = "Eventos UV";
+}
+<h2>Eventos UV por autorizar</h2>
+@if (Model.Solicitudes.Count == 0)
+{
+    <p class="text-muted">No hay solicitudes pendientes.</p>
+}
+else
+{
+    <div class="table-responsive">
+    <table class="table align-middle">
+        <thead>
+            <tr><th>Usuario</th><th>Espacio</th><th>Días</th><th>Horario</th><th>Motivo</th><th>Acción</th></tr>
+        </thead>
+        <tbody>
+        @foreach (var s in Model.Solicitudes)
+        {
+            <tr>
+                <td>@s.Usuario</td>
+                <td>@s.Espacio</td>
+                <td>
+                    @if (s.Dias.Count == 1)
+                    {
+                        @Fmt.Dmy(s.Dias[0])
+                    }
+                    else
+                    {
+                        <span class="badge bg-info text-dark">serie #@s.IdGrupo · @s.Dias.Count días</span>
+                        <div class="small text-muted">@string.Join(", ", s.Dias.Select(d => Fmt.Dmy(d)))</div>
+                    }
+                </td>
+                <td>@s.Horario</td>
+                <td>@s.Motivo</td>
+                <td>
+                    <form method="post" asp-page-handler="Resolver" class="d-inline">
+                        <input type="hidden" name="id" value="@s.IdReservacion" />
+                        <button class="btn btn-sm btn-success" name="aprobar" value="true">Autorizar</button>
+                        <button class="btn btn-sm btn-outline-danger" name="aprobar" value="false">Rechazar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    </div>
+}

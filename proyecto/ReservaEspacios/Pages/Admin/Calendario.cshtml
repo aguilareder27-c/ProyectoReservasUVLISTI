@@ -1,0 +1,57 @@
+@page
+@using ReservaEspacios.Models
+@using ReservaEspacios.Services
+@model ReservaEspacios.Pages.Admin.CalendarioModel
+@{
+    ViewData["Title"] = "Calendario";
+}
+<h2>Calendario semanal</h2>
+<form method="get" class="row g-2 align-items-end mb-3" style="max-width:420px">
+    <div class="col-auto">
+        <label class="form-label">Semana de</label>
+        <input class="form-control" type="date" name="semana" value="@Model.Lunes.ToString("yyyy-MM-dd")" />
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-primary">Ver</button>
+    </div>
+</form>
+
+<p class="text-muted">Semana del @Fmt.Dmy(Model.Lunes) al @Fmt.Dmy(Model.Lunes.AddDays(6))</p>
+
+<div class="table-responsive">
+<table class="table table-bordered align-top">
+    <thead>
+        <tr>
+            <th>Día</th>
+            @foreach (var e in Model.Espacios)
+            {
+                <th>@e.Nombre</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var dia in Model.Dias)
+    {
+        <tr>
+            <td class="fw-semibold">@ReservaService.ToDiaSemana(dia)<br /><span class="small text-muted">@Fmt.Dmy(dia)</span></td>
+            @foreach (var e in Model.Espacios)
+            {
+                <td>
+                    @foreach (var r in Model.Celda(e.IdEspacio, dia))
+                    {
+                        <div class="mb-1 small">
+                            <span class="badge @(r.TipoEvento == TipoEvento.UV ? "bg-info text-dark" : "bg-primary")">@Fmt.Hm(r.HoraInicio)–@Fmt.Hm(r.HoraFin)</span>
+                            @r.Usuario?.Nombre
+                            @if (r.EstadoReservacion == EstadoReservacion.Pendiente)
+                            {
+                                <span class="badge bg-warning text-dark">pend.</span>
+                            }
+                        </div>
+                    }
+                </td>
+            }
+        </tr>
+    }
+    </tbody>
+</table>
+</div>

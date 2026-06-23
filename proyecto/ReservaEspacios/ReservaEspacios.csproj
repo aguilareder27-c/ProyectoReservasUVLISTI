@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>ReservaEspacios</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Proveedor MySQL para EF Core (Pomelo).
+         Si "dotnet restore" no encuentra esta versión, ejecuta:
+           dotnet add package Pomelo.EntityFrameworkCore.MySql
+         para tomar la última compatible. -->
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
+  </ItemGroup>
+
+</Project>

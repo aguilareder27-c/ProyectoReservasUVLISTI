@@ -1,0 +1,74 @@
+@page
+@model ReservaEspacios.Pages.Reservaciones.CrearModel
+@{
+    ViewData["Title"] = "Reservar";
+}
+<h2>Nueva reservación</h2>
+@if (Model.Error != null)
+{
+    <div class="alert alert-danger">@Model.Error</div>
+}
+<form method="post" style="max-width:560px">
+    <div class="mb-3">
+        <label class="form-label">Espacio</label>
+        <select class="form-select" asp-for="IdEspacio" asp-items="Model.EspaciosOpts"></select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Tipo de evento</label>
+        <select class="form-select" asp-for="TipoEvento" id="tipoEvento">
+            <option value="Normal">Normal (aprobación automática, máx. 3 h, 1 solo día)</option>
+            <option value="UV">UV / institucional (requiere autorización, permite varios días)</option>
+        </select>
+    </div>
+
+    <div id="campoNormal" class="mb-3">
+        <label class="form-label">Fecha</label>
+        <input class="form-control" type="date" asp-for="Fecha" />
+    </div>
+
+    <div id="campoUV" class="mb-3" style="display:none">
+        <div class="row">
+            <div class="col">
+                <label class="form-label">Fecha inicio</label>
+                <input class="form-control" type="date" asp-for="FechaInicio" />
+            </div>
+            <div class="col">
+                <label class="form-label">Fecha fin</label>
+                <input class="form-control" type="date" asp-for="FechaFin" />
+            </div>
+        </div>
+        <div class="form-text">Se crea una reservación por cada día válido del rango. Se omiten los días que el espacio no abre o que están marcados como sin servicio.</div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            <label class="form-label">Hora inicio</label>
+            <input class="form-control" type="time" asp-for="HoraInicio" />
+        </div>
+        <div class="col">
+            <label class="form-label">Hora fin</label>
+            <input class="form-control" type="time" asp-for="HoraFin" />
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Motivo</label>
+        <textarea class="form-control" asp-for="Motivo" rows="2" required></textarea>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Reservar</button>
+</form>
+
+@section Scripts {
+<script>
+    const tipo = document.getElementById('tipoEvento');
+    function toggle() {
+        const esUV = tipo.value === 'UV';
+        document.getElementById('campoNormal').style.display = esUV ? 'none' : 'block';
+        document.getElementById('campoUV').style.display = esUV ? 'block' : 'none';
+    }
+    tipo.addEventListener('change', toggle);
+    toggle();
+</script>
+}

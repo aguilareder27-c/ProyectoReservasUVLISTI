@@ -1,0 +1,115 @@
+is_global = true
+build_property.TargetFramework = net10.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v10.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ReservaEspacios
+build_property.RootNamespace = ReservaEspacios
+build_property.ProjectDir = C:\Users\RedFo\OneDrive\Documentos\LISTI\2Semestre\Procesos de desarrollo\Proyecto\ReservaEspacios\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\RedFo\OneDrive\Documentos\LISTI\2Semestre\Procesos de desarrollo\Proyecto\ReservaEspacios
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 10.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Admin/Apelaciones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQXBlbGFjaW9uZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Admin/Calendario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ2FsZW5kYXJpby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Admin/Espacios/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXNwYWNpb3NcRWRpdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Admin/Espacios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXNwYWNpb3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Admin/EventosUV.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXZlbnRvc1VWLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Admin/FechasNoServicio/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRmVjaGFzTm9TZXJ2aWNpb1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Admin/HistorialBloqueos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cSGlzdG9yaWFsQmxvcXVlb3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Admin/Usuarios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVXN1YXJpb3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Espacios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXNwYWNpb3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Reservaciones/Crear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzZXJ2YWNpb25lc1xDcmVhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Reservaciones/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzZXJ2YWNpb25lc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/RedFo/OneDrive/Documentos/LISTI/2Semestre/Procesos de desarrollo/Proyecto/ReservaEspacios/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-wvx4lz7abw

@@ -1,0 +1,42 @@
+@page
+@using ReservaEspacios.Models
+@using ReservaEspacios.Services
+@model ReservaEspacios.Pages.Admin.Espacios.IndexModel
+@{
+    ViewData["Title"] = "Gestión de espacios";
+}
+<h2>Espacios</h2>
+<a class="btn btn-sm btn-primary mb-3" asp-page="/Admin/Espacios/Editar">Nuevo espacio</a>
+<div class="table-responsive">
+<table class="table align-middle">
+    <thead><tr><th>Nombre</th><th>Capacidad</th><th>Horario</th><th>Días</th><th>Estado</th><th>Acciones</th></tr></thead>
+    <tbody>
+    @foreach (var e in Model.Espacios)
+    {
+        <tr>
+            <td>@e.Nombre</td>
+            <td>@e.Capacidad</td>
+            <td>@Fmt.Hm(e.HoraApertura)–@Fmt.Hm(e.HoraCierre)</td>
+            <td class="small">@ReservaEspacios.Pages.Admin.Espacios.IndexModel.Dias(e)</td>
+            <td>
+                @if (e.Estado == EstadoEspacio.Disponible)
+                {
+                    <span class="badge bg-success">Disponible</span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary">Inactivo</span>
+                }
+            </td>
+            <td>
+                <a class="btn btn-sm btn-outline-secondary" asp-page="/Admin/Espacios/Editar" asp-route-id="@e.IdEspacio">Editar</a>
+                <form method="post" asp-page-handler="Toggle" class="d-inline">
+                    <input type="hidden" name="id" value="@e.IdEspacio" />
+                    <button class="btn btn-sm btn-outline-warning">@(e.Estado == EstadoEspacio.Disponible ? "Desactivar" : "Activar")</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+</div>
